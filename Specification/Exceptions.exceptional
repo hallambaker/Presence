@@ -1,0 +1,8 @@
+﻿
+Namespace PresenceSpecification
+
+	Exception TBS
+		Console "Exception TBS"
+		Description
+			|TBS
+
