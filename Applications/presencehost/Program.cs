@@ -18,6 +18,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+using System;
 
 using Goedel.Utilities;
 using Goedel.Mesh.Shell.Host;
@@ -32,12 +33,10 @@ namespace meshhost {
         static Program() => Initialization.Initialized.AssertTrue(Internal.Throw);
 
         static void Main(string[] args) {
-            var commandLineInterpreter = new CommandLineInterpreter();
-
-            commandLineInterpreter.AddService(PublicPresenceService.ServiceDescription);
-            commandLineInterpreter.AddService(ServiceManagementProvider.ServiceDescription);
-
-            commandLineInterpreter.MainMethod(args);
+            Shell shell = new Shell(
+                        PublicPresenceService.ServiceDescription,
+                        ServiceManagementProvider.ServiceDescription);
+            shell.Dispatch(args, Console.Out);
             }
         }
     }
